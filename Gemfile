@@ -41,3 +41,6 @@ group :development do
   gem "pry-rails"
 end
 
+# Web scraping
+gem 'httparty'
+gem 'nokogiri'
