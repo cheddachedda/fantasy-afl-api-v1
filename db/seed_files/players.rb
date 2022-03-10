@@ -7,7 +7,7 @@ def seed_players
       :middle_initial => line[1],
       :last_name => line[2],
       :club_id => Club.find_by(abbreviation: line[3]).id,
-      :position => line[4].split('/'),
+      :position => line[4].strip().split('/'),
       :price => line[5],
       :dob => DateTime.parse(line[6])
     }
