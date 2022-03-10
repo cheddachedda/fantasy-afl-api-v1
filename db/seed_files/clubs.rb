@@ -19,7 +19,9 @@
   { :name=>'Western Bulldogs', :moniker=>'Bulldogs', :abbreviation=>'WBD' }
 ]
 
-@clubs.each do |club|
-  Club.create(club)
-  puts "Created club: #{ club[:name] }"
+def seed_clubs
+  @clubs.each do |club|
+    Club.create(club)
+    puts "Created club: #{ club[:name] }"
+  end
 end
