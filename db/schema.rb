@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_08_221837) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_005744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_08_221837) do
     t.string "name"
     t.string "moniker"
     t.string "abbreviation"
+  end
+
+  create_table "fixtures", force: :cascade do |t|
+    t.integer "round_no"
+    t.datetime "datetime"
+    t.string "venue"
+    t.integer "home_id"
+    t.integer "away_id"
+    t.integer "home_goals_qt"
+    t.integer "home_behinds_qt"
+    t.integer "home_goals_ht"
+    t.integer "home_behinds_ht"
+    t.integer "home_goals_3qt"
+    t.integer "home_behinds_3qt"
+    t.integer "home_goals_ft"
+    t.integer "home_behinds_ft"
+    t.integer "away_goals_qt"
+    t.integer "away_behinds_qt"
+    t.integer "away_goals_ht"
+    t.integer "away_behinds_ht"
+    t.integer "away_goals_3qt"
+    t.integer "away_behinds_3qt"
+    t.integer "away_goals_ft"
+    t.integer "away_behinds_ft"
   end
 
 end
