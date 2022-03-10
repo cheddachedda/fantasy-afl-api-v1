@@ -51,8 +51,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_073941) do
     t.string "last_name"
     t.integer "club_id"
     t.string "position", default: [], array: true
+<<<<<<< HEAD
     t.integer "price"
     t.datetime "dob"
+=======
+>>>>>>> refs/remotes/origin/main
   end
 
 end
