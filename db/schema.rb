@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_09_005744) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_073941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_005744) do
     t.integer "away_behinds_3qt"
     t.integer "away_goals_ft"
     t.integer "away_behinds_ft"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "first_name"
+    t.string "middle_initial"
+    t.string "last_name"
+    t.integer "club_id"
+    t.string "position", default: [], array: true
   end
 
 end
