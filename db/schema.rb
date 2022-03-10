@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_005744) do
 
   create_table "fixtures", force: :cascade do |t|
     t.integer "round_no"
+    t.integer "year"
     t.datetime "datetime"
     t.string "venue"
     t.integer "home_id"
