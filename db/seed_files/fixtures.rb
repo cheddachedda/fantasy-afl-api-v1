@@ -21,7 +21,11 @@ def seed_fixtures(year)
     # Rows with 16 columns = game data
     case row.children.size
     when 1
-      round_no = parse_round_no(row.text)
+      round_no =  if row.text.include?('Round ')
+                    row.text.split('Round ').last.to_i
+                  elsif row.text.include?('Finals Week ')
+                    row.text.split('Finals Week ').last.to_i + 23
+                  end
     when 16
       data = row.children.map{ |c| c.text.strip }
 
@@ -51,7 +55,7 @@ def seed_fixtures(year)
       }
 
       Fixture.create(fixture)
-      puts "Created fixture: R#{fixture[:round_no]} #{data[0]} v #{data[7]}"
+      puts "Created fixture: R#{round_no} #{data[0]} v #{data[7]}"
     end
   end
 end

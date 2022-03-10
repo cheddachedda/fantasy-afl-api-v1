@@ -1,11 +1,3 @@
-def parse_round_no(row_text)
-  if row_text.include?('Round ')
-    row_text.split('Round ').last.to_i
-  elsif row_text.include?('Finals Week ')
-    row_text.split('Finals Week ').last.to_i + 23
-  end
-end
-
 def find_club_id(club_name)
   aliases = {
     'Brisbane Lions' => 'Brisbane',
