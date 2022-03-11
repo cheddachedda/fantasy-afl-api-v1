@@ -60,7 +60,7 @@ def scrape_player_page(player)
       :fixture_id => fixture_id,
       :round_no => round_no,
       :position => player[:position],
-      :time_on_ground_percentage => data.last,
+      :time_on_ground_percentage => data.last.to_i,
       :fantasy_score => fantasy_score
     })
 
