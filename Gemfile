@@ -44,3 +44,6 @@ end
 # Web scraping
 gem 'httparty'
 gem 'nokogiri'
+
+# Heroku deployment
+gem 'rails_12factor', group: :production
