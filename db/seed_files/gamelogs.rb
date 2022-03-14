@@ -58,6 +58,7 @@ def scrape_player_page(player)
       :club_id => club_id,
       :fixture_id => fixture_id,
       :round_no => round_no,
+      :year => year,
       :position => player[:position],
       :time_on_ground_percentage => data.last.to_i,
       :fantasy_score => fantasy_score

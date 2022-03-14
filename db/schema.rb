@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_10_093429) do
     t.integer "club_id"
     t.integer "fixture_id"
     t.integer "round_no"
+    t.integer "year"
     t.string "position", default: [], array: true
     t.integer "time_on_ground_percentage"
     t.integer "fantasy_score"
