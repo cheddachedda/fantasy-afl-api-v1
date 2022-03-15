@@ -97,7 +97,7 @@ class Gamelog < ApplicationRecord
     end
   end
 
-  def value
+  def fantasy_value
     position.to_h do |pos|
       value = ((fantasy_score.to_f / par[pos]) * 100).round(2)
       [pos, value]
