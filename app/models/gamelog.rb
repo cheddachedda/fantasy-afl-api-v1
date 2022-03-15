@@ -13,6 +13,37 @@ class Gamelog < ApplicationRecord
   @@pars = {}
   @@eligible_rounds_for_par = {}
 
+  def fantasy_value
+    position.to_h do |pos|
+      value = ((fantasy_score.to_f / par[pos]) * 100).round(2)
+      [pos, value]
+    end
+  end
+
+  def rank
+    position.to_h do |pos|
+      sql = 'SELECT '\
+              '*, '\
+              'RANK() OVER ('\
+                'ORDER BY fantasy_score DESC'\
+              ") rank "\
+            'FROM gamelogs '\
+            "WHERE year=#{year} "\
+            "AND round_no=#{round_no} "\
+            "AND '#{pos}' = ANY (position);"
+
+      rank = ActiveRecord::Base
+              .connection
+              .execute(sql)
+              .select{ |g| g['id'] == id }
+              .first['rank']
+      
+      [pos, rank]
+    end
+  end
+
+  private
+
   def self.calculate_all_pars
     years = Fixture.find_by_sql('SELECT DISTINCT year FROM fixtures ORDER BY year;').collect(&:year)
 
@@ -94,13 +125,6 @@ class Gamelog < ApplicationRecord
     Gamelog.calculate_all_pars if @@pars.empty?
     position.to_h do |pos|
       [pos, @@pars[year][pos][round_no]]
-    end
-  end
-
-  def fantasy_value
-    position.to_h do |pos|
-      value = ((fantasy_score.to_f / par[pos]) * 100).round(2)
-      [pos, value]
     end
   end
 end
